@@ -43,7 +43,7 @@ class Queue
         void clear();
         void front(); // void to run make file
         void back();  // void to run make file
-        void push();  // void to run make file
+        void push(const T&);  // void to run make file
         void pop();
         void reserve(size_t n);
 };
@@ -57,22 +57,21 @@ Queue<T>::Queue()
     qFront = 0;                     // First element of qArray
     qBack = qCapacity - 1;          // Last element of qArray
 }
-/*
 
 template <class T>
-Queue<T>::size()
+size_t Queue<T>::size()
 {
     return qSize;
 }
 
 template <class T>
-Queue<T>::capacity()
+size_t Queue<T>::capacity()
 {
     return qCapacity;
 }
 
 template <class T>
-Queue<T>::empty()
+bool Queue<T>::empty()
 {
     if (qSize == 0)
     {
@@ -83,6 +82,7 @@ Queue<T>::empty()
         return false;
     }
 }
+/*
 
 template <class T>
 Queue<T>::clear()
@@ -109,9 +109,10 @@ Queue<T>::back()
 
     return qArray[qBack];
 }
+*/
 
 template <class T>
-Queue<T>::push()
+void Queue<T>::push(const T& val)
 {
     if (qSize == qCapacity)
     {
@@ -122,9 +123,10 @@ Queue<T>::push()
     }
 
     qBack = (qBack + 1) % qCapacity;
-    qArray[qBack] = val;
+    qArray[qBack] = val; 
     ++qSize;
 }
+/*
 
 template <class T>
 Queue<T>::pop()
@@ -155,6 +157,7 @@ Queue<T>::~Queue()
 {
     delete[] qArray;
 }
+*/
 
 template <class T>
 void Queue<T>::reserve(size_t n)
@@ -178,9 +181,11 @@ void Queue<T>::reserve(size_t n)
     qArray = tempArray;
 }
 
-*/
+template <class T>
 ostream& operator<<(ostream& lhs, const Queue<T>& rhs)
 {
+    size_t current, i;
+
     for (current = rhs.qFront, i = 0; i < rhs.qSize; ++i)
     {
         // Print queue element at subscript i
@@ -189,7 +194,7 @@ ostream& operator<<(ostream& lhs, const Queue<T>& rhs)
         current = (current + 1) % rhs.qCapacity;
     }
 
- 
+    return lhs;
 }
 
 #endif

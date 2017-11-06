@@ -23,7 +23,6 @@ int main()
    Queue<int> q1;
    
    cout << "q1: " << q1 << endl;
-   /*
    cout << "q1 size: " << q1.size() << endl;
    cout << "q1 capacity: " << q1.capacity() << endl;
    cout << "q1 is " << ((q1.empty()) ? "empty\n" : "not empty\n");
@@ -39,6 +38,7 @@ int main()
    cout << "q1 capacity: " << q1.capacity() << endl;
    cout << "q1 is " << ((q1.empty()) ? "empty\n" : "not empty\n");
    cout << endl;
+   /*
    
    cout << "Testing pop()\n\n";
    
