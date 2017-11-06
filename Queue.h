@@ -9,8 +9,11 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
+#include <iostream>
 #include <ostream>
 #include <stdexcept>
+
+using namespace std;
 
 // Forward declaration of the Queue template class
 template <class T>
@@ -18,31 +21,31 @@ class Queue;
 
 // Forward declaration of the operator<< template function
 template <class T>
-std::ostream& operator<<(std::ostream&, const Queue<T>&);
+ostream& operator<<(ostream&, const Queue<T>&);
 
 template <class T>
 class Queue
 {
     // Friend functions
-    friend ostream& operator<<(ostream& lhs, const Queue<T>& rhs); 
-
+    friend ostream& operator<< <>(ostream& lhs, const Queue<T>& rhs); 
     private:
-        size_t qArray; 
+        T* qArray; 
         size_t qCapacity; 
         size_t qSize;
         int qFront;
         int qBack;
     public:
         Queue();
-        size();
-        empty();
-        clear();
-        front();
-        back();
-        push();
-        pop();
         Queue(const T& other);
-        reserve(size_t n);
+        size_t size();
+        size_t capacity();
+        bool empty();
+        void clear();
+        void front(); // void to run make file
+        void back();  // void to run make file
+        void push();  // void to run make file
+        void pop();
+        void reserve(size_t n);
 };
 
 template <class T>
@@ -54,11 +57,18 @@ Queue<T>::Queue()
     qFront = 0;                     // First element of qArray
     qBack = qCapacity - 1;          // Last element of qArray
 }
+/*
 
 template <class T>
 Queue<T>::size()
 {
     return qSize;
+}
+
+template <class T>
+Queue<T>::capacity()
+{
+    return qCapacity;
 }
 
 template <class T>
@@ -168,18 +178,9 @@ void Queue<T>::reserve(size_t n)
     qArray = tempArray;
 }
 
+*/
 ostream& operator<<(ostream& lhs, const Queue<T>& rhs)
 {
-    /*
-    for (size_t i = 0; i < rhs.qSize; i++)
-    { 
-        lhs << rhs.qArray[i] << " "; 
-    }
-
-    return lhs;
-    */
-    size_t current, i;
-          
     for (current = rhs.qFront, i = 0; i < rhs.qSize; ++i)
     {
         // Print queue element at subscript i
@@ -188,6 +189,7 @@ ostream& operator<<(ostream& lhs, const Queue<T>& rhs)
         current = (current + 1) % rhs.qCapacity;
     }
 
+ 
 }
 
 #endif

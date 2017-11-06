@@ -23,12 +23,12 @@ int main()
    Queue<int> q1;
    
    cout << "q1: " << q1 << endl;
+   /*
    cout << "q1 size: " << q1.size() << endl;
    cout << "q1 capacity: " << q1.capacity() << endl;
    cout << "q1 is " << ((q1.empty()) ? "empty\n" : "not empty\n");
    cout << endl;
-   
-   /*
+
    cout << "Testing push()\n\n";
    
    for (int i = 5; i < 40; i += 5)
