@@ -1,17 +1,31 @@
 //*********************************************************************
-//// FILE:        Stack.h
+//// FILE:        Queue.h
 //// AUTHOR:      Samuel Piecz
 //// LOGON ID:    Z1732715
-//// DUE DATE:    10/31/17
+//// DUE DATE:    11/09/17
 ////
-//// PURPOSE:     Declaration for the Stack class. ADTs 4 life. 
+//// PURPOSE:     Declaration for the Queue class. ADTs 4 life. 
 ////********************************************************************
 #ifndef QUEUE_H
 #define QUEUE_H
 
+#include <ostream>
+#include <stdexcept>
+
+// Forward declaration of the Queue template class
+template <class T>
+class Queue;
+
+// Forward declaration of the operator<< template function
+template <class T>
+std::ostream& operator<<(std::ostream&, const Queue<T>&);
+
 template <class T>
 class Queue
 {
+    // Friend functions
+    friend ostream& operator<<(ostream& lhs, const Queue<T>& rhs); 
+
     private:
         size_t qArray; 
         size_t qCapacity; 
@@ -28,7 +42,6 @@ class Queue
         push();
         pop();
         Queue(const T& other);
-        Queue();
         reserve(size_t n);
 };
 
@@ -114,7 +127,7 @@ Queue<T>::pop()
 }
 
 template <class T>
-Queue<T>::Queue(const T& other)
+Queue<T>::Queue(const Queue<T>& other)
 {
     qCapacity = other.qCapacity;
     qSize = other.qSize;
@@ -153,6 +166,28 @@ void Queue<T>::reserve(size_t n)
     qBack = qSize - 1;
     delete[] qArray;
     qArray = tempArray;
+}
+
+ostream& operator<<(ostream& lhs, const Queue<T>& rhs)
+{
+    /*
+    for (size_t i = 0; i < rhs.qSize; i++)
+    { 
+        lhs << rhs.qArray[i] << " "; 
+    }
+
+    return lhs;
+    */
+    size_t current, i;
+          
+    for (current = rhs.qFront, i = 0; i < rhs.qSize; ++i)
+    {
+        // Print queue element at subscript i
+        lhs << rhs.qArray[current] << ' ';
+        // Increment i, wrapping around to front of queue array if necessary     
+        current = (current + 1) % rhs.qCapacity;
+    }
+
 }
 
 #endif

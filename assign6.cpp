@@ -1,8 +1,8 @@
 /*********************************************************************
    PROGRAM:    CSCI 241 Assignment 6
-   PROGRAMMER: your name
-   LOGON ID:   your z-ID
-   DUE DATE:   due date of assignment
+   PROGRAMMER: Samuel Piecz
+   LOGON ID:   Z1732715 
+   DUE DATE:   11/09/17 
     
    FUNCTION:   This program tests the functionality of the Queue
                template class.
@@ -28,6 +28,7 @@ int main()
    cout << "q1 is " << ((q1.empty()) ? "empty\n" : "not empty\n");
    cout << endl;
    
+   /*
    cout << "Testing push()\n\n";
    
    for (int i = 5; i < 40; i += 5)
@@ -220,6 +221,8 @@ int main()
       {
       cout << "Caught "<< e.what() << endl;
       }
+
+   */
 
    return 0;
    }
