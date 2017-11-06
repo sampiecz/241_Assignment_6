@@ -50,6 +50,16 @@ class Queue
         void reserve(size_t n);
 };
 
+/***************************************************************
+ Queue Constructor 
+
+ Use: Instantiates Queue object and sets it's data attributes. 
+
+ Parameters: No parameters. 
+
+ Returns: No return.
+***************************************************************/
+
 template <class T>
 Queue<T>::Queue()
 {
@@ -60,17 +70,47 @@ Queue<T>::Queue()
     qBack = qCapacity - 1;          // Last element of qArray
 }
 
+/***************************************************************
+ Queue Constructor 
+
+ Use: Instantiates Queue object and sets it's data attributes. 
+
+ Parameters: No parameters. 
+
+ Returns: No return.
+***************************************************************/
+
 template <class T>
 size_t Queue<T>::size() const
 {
     return qSize;
 }
 
+/***************************************************************
+ Queue Constructor 
+
+ Use: Instantiates Queue object and sets it's data attributes. 
+
+ Parameters: No parameters. 
+
+ Returns: No return.
+***************************************************************/
+
 template <class T>
 size_t Queue<T>::capacity()
 {
     return qCapacity;
 }
+
+/***************************************************************
+ Queue Constructor 
+
+ Use: Instantiates Queue object and sets it's data attributes. 
+
+ Parameters: No parameters. 
+
+ Returns: No return.
+***************************************************************/
 
 template <class T>
 bool Queue<T>::empty() const
@@ -85,6 +125,16 @@ bool Queue<T>::empty() const
     }
 }
 
+/***************************************************************
+ Queue Constructor 
+
+ Use: Instantiates Queue object and sets it's data attributes. 
+
+ Parameters: No parameters. 
+
+ Returns: No return.
+***************************************************************/
+
 template <class T>
 void Queue<T>::clear()
 {
@@ -92,6 +142,16 @@ void Queue<T>::clear()
     qFront = 0;
     qBack = qCapacity - 1;
 }
+
+/***************************************************************
+ Queue Constructor 
+
+ Use: Instantiates Queue object and sets it's data attributes. 
+
+ Parameters: No parameters. 
+
+ Returns: No return.
+***************************************************************/
 
 template <class T>
 const T& Queue<T>::front() const 
@@ -104,6 +164,16 @@ const T& Queue<T>::front() const
     return qArray[qFront];
 }
 
+/***************************************************************
+ Queue Constructor 
+
+ Use: Instantiates Queue object and sets it's data attributes. 
+
+ Parameters: No parameters. 
+
+ Returns: No return.
+***************************************************************/
+
 template <class T>
 const T& Queue<T>::back() const
 {
@@ -113,6 +183,16 @@ const T& Queue<T>::back() const
     }
     return qArray[qBack];
 }
+
+/***************************************************************
+ Queue Constructor 
+
+ Use: Instantiates Queue object and sets it's data attributes. 
+
+ Parameters: No parameters. 
+
+ Returns: No return.
+***************************************************************/
 
 template <class T>
 void Queue<T>::push(const T& val)
@@ -134,6 +214,16 @@ void Queue<T>::push(const T& val)
     ++qSize;
 }
 
+/***************************************************************
+ Queue Constructor 
+
+ Use: Instantiates Queue object and sets it's data attributes. 
+
+ Parameters: No parameters. 
+
+ Returns: No return.
+***************************************************************/
+
 template <class T>
 void Queue<T>::pop()
 {
@@ -146,6 +236,16 @@ void Queue<T>::pop()
     qFront = (qFront + 1) % qCapacity;
     --qSize;
 }
+
+/***************************************************************
+ Queue Constructor 
+
+ Use: Instantiates Queue object and sets it's data attributes. 
+
+ Parameters: No parameters. 
+
+ Returns: No return.
+***************************************************************/
 
 template <class T>
 Queue<T>::Queue(const T& other)
@@ -161,11 +261,31 @@ Queue<T>::Queue(const T& other)
     qBack = other.qBack;
 } 
 
+/***************************************************************
+ Queue Constructor 
+
+ Use: Instantiates Queue object and sets it's data attributes. 
+
+ Parameters: No parameters. 
+
+ Returns: No return.
+***************************************************************/
+
 template <class T>
 Queue<T>::~Queue()
 {
     delete[] qArray;
 }
+
+/***************************************************************
+ Queue Constructor 
+
+ Use: Instantiates Queue object and sets it's data attributes. 
+
+ Parameters: No parameters. 
+
+ Returns: No return.
+***************************************************************/
 
 template <class T>
 void Queue<T>::reserve(size_t n)
@@ -189,6 +309,16 @@ void Queue<T>::reserve(size_t n)
     qArray = tempArray;
 }
 
+/***************************************************************
+ Queue Constructor 
+
+ Use: Instantiates Queue object and sets it's data attributes. 
+
+ Parameters: No parameters. 
+
+ Returns: No return.
+***************************************************************/
+
 template <class T>
 ostream& operator<<(ostream& lhs, const Queue<T>& rhs)
 {
@@ -204,6 +334,16 @@ ostream& operator<<(ostream& lhs, const Queue<T>& rhs)
 
     return lhs;
 }
+
+/***************************************************************
+ Queue Constructor 
+
+ Use: Instantiates Queue object and sets it's data attributes. 
+
+ Parameters: No parameters. 
+
+ Returns: No return.
+***************************************************************/
 
 template <class T>
 Queue<T>& Queue<T>::operator=(const Queue<T>& other)
@@ -232,7 +372,5 @@ Queue<T>& Queue<T>::operator=(const Queue<T>& other)
     return *this;
 
 }
-
-
 
 #endif
