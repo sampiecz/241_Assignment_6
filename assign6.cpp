@@ -38,7 +38,6 @@ int main()
    cout << "q1 capacity: " << q1.capacity() << endl;
    cout << "q1 is " << ((q1.empty()) ? "empty\n" : "not empty\n");
    cout << endl;
-   /*
    
    cout << "Testing pop()\n\n";
    
@@ -93,6 +92,7 @@ int main()
    cout << "q1 capacity: " << q1.capacity() << endl;
    cout << "q1 is " << ((q1.empty()) ? "empty\n" : "not empty\n");
    cout << endl;
+   /*
 
    cout << "q2: " << q2 << endl;
    cout << "q2 size: " << q2.size() << endl;

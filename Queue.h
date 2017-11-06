@@ -37,6 +37,7 @@ class Queue
     public:
         Queue();
         Queue(const T& other);
+        Queue& operator=(const Queue& other);
         size_t size();
         size_t capacity();
         bool empty();
@@ -126,20 +127,25 @@ void Queue<T>::push(const T& val)
     qArray[qBack] = val; 
     ++qSize;
 }
-/*
 
 template <class T>
-Queue<T>::pop()
+void Queue<T>::pop()
 {
     if (empty())
-        throw underflow exception
+    {
+        // You left off here
+        throw underflow_error("The heck.  Underflow_Error on empty().");
+    }
 
     qFront = (qFront + 1) % qCapacity;
     --qSize;
 }
 
+// Did have Queue<T> prior to just T&.
+// This causes no errors. So I need to
+// read more about that to fully understand it. 
 template <class T>
-Queue<T>::Queue(const Queue<T>& other)
+Queue<T>::Queue(const T& other)
 {
     qCapacity = other.qCapacity;
     qSize = other.qSize;
@@ -151,7 +157,7 @@ Queue<T>::Queue(const Queue<T>& other)
     qFront = other.qFront;
     qBack = other.qBack;
 }  
-
+/*
 template <class T>
 Queue<T>::~Queue()
 {
@@ -196,5 +202,35 @@ ostream& operator<<(ostream& lhs, const Queue<T>& rhs)
 
     return lhs;
 }
+
+template <class T>
+Queue& Queue<T>::operator=(const Queue<T>& other)
+{
+    if (this != &other)
+    {
+        delete[] qArray;
+        qCapacity = other.qCapacity;
+        qSize = other.qSize;
+                
+        if (qCapacity == 0)
+        {
+            qArray = nullptr;
+        }
+        else
+        {
+            qArray = new int[qCapacity];
+        }
+
+        for (size_t i = 0; i < qSize; ++i)
+        {
+            qArray[i] = other.qArray[i];
+        }
+    }
+    
+    return *this;
+
+}
+
+
 
 #endif
