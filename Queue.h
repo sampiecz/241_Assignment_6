@@ -36,7 +36,7 @@ class Queue
         int qBack;
     public:
         Queue();
-        Queue(const T& other);
+        Queue(const Queue<T>& other);
         Queue<T>& operator=(const Queue& other);
         ~Queue();
         size_t size() const;
@@ -248,11 +248,11 @@ void Queue<T>::pop()
 ***************************************************************/
 
 template <class T>
-Queue<T>::Queue(const T& other)
+Queue<T>::Queue(const Queue<T>& other)
 {
     qCapacity = other.qCapacity;
     qSize = other.qSize;
-    qArray = new int[qCapacity];
+    qArray = new T[qCapacity];
 
     for (size_t i = 0; i < qCapacity; ++i)
         qArray[i] = other.qArray[i];
@@ -360,7 +360,7 @@ Queue<T>& Queue<T>::operator=(const Queue<T>& other)
         }
         else
         {
-            qArray = new int[qCapacity];
+            qArray = new T[qCapacity];
         }
 
         for (size_t i = 0; i < qSize; ++i)
