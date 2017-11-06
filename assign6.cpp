@@ -176,7 +176,6 @@ int main()
       q5.push(c);
 
    cout << "q5 (size " << q5.size() << "): " << q5 << endl << endl;
-   /*
 
    cout << "Testing const correctness\n\n";
 
@@ -221,6 +220,6 @@ int main()
       {
       cout << "Caught "<< e.what() << endl;
       }
-   */
+
    return 0;
    }

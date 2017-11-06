@@ -38,13 +38,14 @@ class Queue
         Queue();
         Queue(const T& other);
         Queue<T>& operator=(const Queue& other);
-        size_t size();
+        ~Queue();
+        size_t size() const;
         size_t capacity();
-        bool empty();
+        bool empty() const;
         void clear();
-        const T& front(); // void to run make file
-        const T& back();  // void to run make file
-        void push(const T&);  // void to run make file
+        const T& front() const; 
+        const T& back() const;  
+        void push(const T&);  
         void pop();
         void reserve(size_t n);
 };
@@ -60,7 +61,7 @@ Queue<T>::Queue()
 }
 
 template <class T>
-size_t Queue<T>::size()
+size_t Queue<T>::size() const
 {
     return qSize;
 }
@@ -72,7 +73,7 @@ size_t Queue<T>::capacity()
 }
 
 template <class T>
-bool Queue<T>::empty()
+bool Queue<T>::empty() const
 {
     if (qSize == 0)
     {
@@ -93,7 +94,7 @@ void Queue<T>::clear()
 }
 
 template <class T>
-const T& Queue<T>::front() 
+const T& Queue<T>::front() const 
 {
     if (empty())
     {
@@ -104,7 +105,7 @@ const T& Queue<T>::front()
 }
 
 template <class T>
-const T& Queue<T>::back()
+const T& Queue<T>::back() const
 {
     if (empty())
     {
@@ -146,9 +147,6 @@ void Queue<T>::pop()
     --qSize;
 }
 
-// Did have Queue<T> prior to just T&.
-// This causes no errors. So I need to
-// read more about that to fully understand it. 
 template <class T>
 Queue<T>::Queue(const T& other)
 {
@@ -161,14 +159,13 @@ Queue<T>::Queue(const T& other)
 
     qFront = other.qFront;
     qBack = other.qBack;
-}  
-/*
+} 
+
 template <class T>
 Queue<T>::~Queue()
 {
     delete[] qArray;
 }
-*/
 
 template <class T>
 void Queue<T>::reserve(size_t n)
@@ -176,7 +173,7 @@ void Queue<T>::reserve(size_t n)
     if (n < qSize || n == qCapacity)
         return;
 
-    int* tempArray = new int[n];
+    T* tempArray = new T[n];
 
     int current = qFront;
     for (size_t i = 0; i < qSize; i++)
