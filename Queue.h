@@ -37,13 +37,13 @@ class Queue
     public:
         Queue();
         Queue(const T& other);
-        Queue& operator=(const Queue& other);
+        Queue<T>& operator=(const Queue& other);
         size_t size();
         size_t capacity();
         bool empty();
         void clear();
-        void front(); // void to run make file
-        void back();  // void to run make file
+        const T& front(); // void to run make file
+        const T& back();  // void to run make file
         void push(const T&);  // void to run make file
         void pop();
         void reserve(size_t n);
@@ -83,10 +83,9 @@ bool Queue<T>::empty()
         return false;
     }
 }
-/*
 
 template <class T>
-Queue<T>::clear()
+void Queue<T>::clear()
 {
     qSize = 0;
     qFront = 0;
@@ -94,23 +93,25 @@ Queue<T>::clear()
 }
 
 template <class T>
-Queue<T>::front()
+const T& Queue<T>::front() 
 {
     if (empty())
-        throw underflow exception
+    {
+        throw underflow_error("The heck. Underflow_Error from front()");
+    }
 
     return qArray[qFront];
 }
 
 template <class T>
-Queue<T>::back()
+const T& Queue<T>::back()
 {
     if (empty())
-        throw underflow exception
-
+    {
+        throw underflow_error("The heck. Underflow_Error from back()");
+    }
     return qArray[qBack];
 }
-*/
 
 template <class T>
 void Queue<T>::push(const T& val)
@@ -118,9 +119,13 @@ void Queue<T>::push(const T& val)
     if (qSize == qCapacity)
     {
         if (qCapacity == 0)
+        {
             reserve(1);
+        }
         else
+        {
             reserve(qCapacity * 2);
+        }
     }
 
     qBack = (qBack + 1) % qCapacity;
@@ -204,7 +209,7 @@ ostream& operator<<(ostream& lhs, const Queue<T>& rhs)
 }
 
 template <class T>
-Queue& Queue<T>::operator=(const Queue<T>& other)
+Queue<T>& Queue<T>::operator=(const Queue<T>& other)
 {
     if (this != &other)
     {
