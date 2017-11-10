@@ -71,13 +71,13 @@ Queue<T>::Queue()
 }
 
 /***************************************************************
- Queue Constructor 
+ Size method 
 
- Use: Instantiates Queue object and sets it's data attributes. 
+ Use: Returns Queue's size data member. 
 
  Parameters: No parameters. 
 
- Returns: No return.
+ Returns: qSize
 ***************************************************************/
 
 template <class T>
@@ -87,13 +87,13 @@ size_t Queue<T>::size() const
 }
 
 /***************************************************************
- Queue Constructor 
+ Capacity method 
 
- Use: Instantiates Queue object and sets it's data attributes. 
+ Use: Returns Queue object's capacity. 
 
  Parameters: No parameters. 
 
- Returns: No return.
+ Returns: qCapacity
 ***************************************************************/
 
 template <class T>
@@ -103,13 +103,13 @@ size_t Queue<T>::capacity()
 }
 
 /***************************************************************
- Queue Constructor 
+ Empty method 
 
- Use: Instantiates Queue object and sets it's data attributes. 
+ Use: Says wether or not the object is empty. 
 
  Parameters: No parameters. 
 
- Returns: No return.
+ Returns: A bool stating wether or not the object is empty.
 ***************************************************************/
 
 template <class T>
@@ -126,9 +126,10 @@ bool Queue<T>::empty() const
 }
 
 /***************************************************************
- Queue Constructor 
+ Clear method 
 
- Use: Instantiates Queue object and sets it's data attributes. 
+ Use: Resets the Queue object back to it's default created state.
+ In other words it clears the object.... 
 
  Parameters: No parameters. 
 
@@ -144,13 +145,14 @@ void Queue<T>::clear()
 }
 
 /***************************************************************
- Queue Constructor 
+ Front method 
 
- Use: Instantiates Queue object and sets it's data attributes. 
+ Use: Returns the front object in the qArray. If the object is
+ empty it throws an error. 
 
  Parameters: No parameters. 
 
- Returns: No return.
+ Returns: qArray[qFront] so the front object in the array.
 ***************************************************************/
 
 template <class T>
@@ -158,20 +160,21 @@ const T& Queue<T>::front() const
 {
     if (empty())
     {
-        throw underflow_error("The heck. Underflow_Error from front()");
+        throw underflow_error("Underflow_Error from front()");
     }
 
     return qArray[qFront];
 }
 
 /***************************************************************
- Queue Constructor 
+ Back method 
 
- Use: Instantiates Queue object and sets it's data attributes. 
+ Use: Returns the back item in the array. If it doesn't exist
+ it throws an error.  
 
  Parameters: No parameters. 
 
- Returns: No return.
+ Returns: qArray[qBack] the back item of the array.
 ***************************************************************/
 
 template <class T>
@@ -179,17 +182,17 @@ const T& Queue<T>::back() const
 {
     if (empty())
     {
-        throw underflow_error("The heck. Underflow_Error from back()");
+        throw underflow_error("Underflow_Error from back()");
     }
     return qArray[qBack];
 }
 
 /***************************************************************
- Queue Constructor 
+ Push method 
 
- Use: Instantiates Queue object and sets it's data attributes. 
+ Use: Pushes a new item to the Queue object. 
 
- Parameters: No parameters. 
+ Parameters: Reference to a constant template called val. 
 
  Returns: No return.
 ***************************************************************/
@@ -215,9 +218,10 @@ void Queue<T>::push(const T& val)
 }
 
 /***************************************************************
- Queue Constructor 
+ Pop method 
 
- Use: Instantiates Queue object and sets it's data attributes. 
+ Use: If empty thow underflow error. Otherwise pop the next
+ object off the Queue ADT. 
 
  Parameters: No parameters. 
 
@@ -230,7 +234,7 @@ void Queue<T>::pop()
     if (empty())
     {
         // You left off here
-        throw underflow_error("The heck.  Underflow_Error on empty().");
+        throw underflow_error("Underflow_Error on empty().");
     }
 
     qFront = (qFront + 1) % qCapacity;
@@ -238,7 +242,7 @@ void Queue<T>::pop()
 }
 
 /***************************************************************
- Queue Constructor 
+ Alternate Queue Constructor 
 
  Use: Instantiates Queue object and sets it's data attributes. 
 
@@ -262,9 +266,9 @@ Queue<T>::Queue(const Queue<T>& other)
 } 
 
 /***************************************************************
- Queue Constructor 
+ Queue Destructor 
 
- Use: Instantiates Queue object and sets it's data attributes. 
+ Use: Deletes the Queue object. 
 
  Parameters: No parameters. 
 
@@ -278,13 +282,14 @@ Queue<T>::~Queue()
 }
 
 /***************************************************************
- Queue Constructor 
+ Reserve method 
 
- Use: Instantiates Queue object and sets it's data attributes. 
+ Use: Make array larger when it's needed.  
 
- Parameters: No parameters. 
+ Parameters: size_t n 
 
- Returns: No return.
+ Returns: If the size_t object is less that qSize or n is equal
+ to the qCapacity the it will return itself.
 ***************************************************************/
 
 template <class T>
@@ -310,13 +315,15 @@ void Queue<T>::reserve(size_t n)
 }
 
 /***************************************************************
- Queue Constructor 
+ Overloaded Output Operator 
 
- Use: Instantiates Queue object and sets it's data attributes. 
+ Use: Overloads the output operator. Makes it possible to cout
+ Queue object.  
 
- Parameters: No parameters. 
+ Parameters: Reference to an osteam object, lhs, and a reference
+ to a constant Queue template object called rhs. 
 
- Returns: No return.
+ Returns: lhs
 ***************************************************************/
 
 template <class T>
@@ -336,13 +343,14 @@ ostream& operator<<(ostream& lhs, const Queue<T>& rhs)
 }
 
 /***************************************************************
- Queue Constructor 
+ Queue assignment operator 
 
- Use: Instantiates Queue object and sets it's data attributes. 
+ Use: Assigns Queue objects to another.  
 
- Parameters: No parameters. 
+ Parameters: Reference to a constant Queue Template object
+ called other. 
 
- Returns: No return.
+ Returns: This object.
 ***************************************************************/
 
 template <class T>
